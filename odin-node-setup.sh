@@ -14,7 +14,7 @@ source ~/.profile
 git clone https://github.com/ODIN-PROTOCOL/odin-core.git
 cd odin-core
 git fetch --tags
-git checkout v0.5.5
+git checkout v0.6.2
 make all
 mkdir -p ~/.odin/cosmovisor/genesis/bin
 cp ~/go/bin/odind ~/.odin/cosmovisor/genesis/bin/
@@ -82,7 +82,7 @@ WantedBy=multi-user.target" > odind.service
 sudo cp odind.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable odind
-odind unsafe-reset-all
+odind tendermint unsafe-reset-all --home ~/.odin
 sudo systemctl start odind
 echo "Odin has been built from source, configured, and started.  Please check the log file with 'journalctl -fu odind' to verify node operational."
 
